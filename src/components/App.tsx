@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Masonry from 'react-masonry-component';
+import Masonry from 'react-masonry-css'
 import InfiniteScroll from 'react-infinite-scroll-component';
 
+import GlobalStyle from './Global';
 import Container from './Container';
 
 interface ImageType {
@@ -29,36 +30,41 @@ const App: React.FC = () => {
     getImages();
   }, []);
 
-  const masonryOptions = {
-    transitionDuration: 0,
-    gutter: 10,
-    fitWidth: true
-  };
-
   return (
-    <Container>
-      <InfiniteScroll
-        dataLength={images.length}
-        next={() => {
-          getImages(5, page + 1);
-          setPage(page + 1);
-        }}
-        hasMore
-        loader={<span>Loading</span>}>
-        <Masonry
-          options={masonryOptions}
-          disableImagesLoaded={false}
-          updateOnEachImageLoad={false}>
-          {
-            images.map((image: ImageType) => {
-              return (
-                <img style={{ marginBottom: "10px" }} src={image.urls.small} />
-              )
-            })
-          }
-        </Masonry>
-      </InfiniteScroll>
-    </Container>
+    <>
+      <GlobalStyle />
+
+      <Container>
+        <InfiniteScroll
+          dataLength={images.length}
+          next={() => {
+            getImages(5, page + 1);
+            setPage(page + 1);
+          }}
+          hasMore
+          loader={<span>Loading</span>}>
+          <Masonry
+            breakpointCols={2}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column">
+            {
+              images.map((image: ImageType) => {
+                return (
+                  <img
+                    style={{
+                      marginBottom: "10px",
+                      width: "100%",
+                      display: "block"
+                    }}
+                    src={image.urls.small} />
+                )
+              })
+            }
+          </Masonry>
+
+        </InfiniteScroll>
+      </Container>
+    </>
   );
 }
 
