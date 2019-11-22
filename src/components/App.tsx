@@ -44,7 +44,7 @@ const App: React.FC = () => {
           hasMore
           loader={<span>Loading</span>}>
           <Masonry
-            breakpointCols={2}
+            breakpointCols={3}
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column">
             {
