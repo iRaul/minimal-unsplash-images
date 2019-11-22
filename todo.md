@@ -1,8 +1,8 @@
 ## Minimal Images
 
 [x] Env Variables
-[-] Fetch Data
+[x] Fetch Data
 [-] Grid Layout
-[-] Infinite Scroll
-[-] Use Typescript
+[x] Infinite Scroll
+[x] Use Typescript
 [-] UI Design
