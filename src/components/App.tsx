@@ -25,12 +25,18 @@ const App: React.FC = () => {
   const [modal, setModal] = useState<boolean>(false);
 
   const getImages = async (items = 10, page = 1) => {
-    const response = await fetch(`https://api.unsplash.com/search/photos?per_page=${items}&page=${page}&query=minimal&client_id=${process.env.REACT_APP_KEY}`);
-    const json = await response.json();
-    const res = json.results;
-    const newImages = [...images, ...res];
+    try {
+      const response = await fetch(`https://api.unsplash.com/search/photos?per_page=${items}&page=${page}&query=minimal&client_id=${process.env.REACT_APP_KEY}`);
+      const json = await response.json();
+      const res = json.results;
+      const newImages = [...images, ...res];
 
-    setImages(newImages);
+      if (response.status === 200) {
+        setImages(newImages);
+      }
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   useEffect(() => {
