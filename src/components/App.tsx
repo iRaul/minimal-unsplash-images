@@ -4,6 +4,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 import GlobalStyle from './Global';
 import Container from './Container';
+import Loader from './Loader';
 import Header from './Header';
 import Image from './Image';
 import Modal from './Modal';
@@ -49,14 +50,14 @@ const App: React.FC = () => {
             setPage(page + 1);
           }}
           hasMore
-          loader={<span>Loading</span>}>
+          loader={<Loader />}>
           <Masonry
             breakpointCols={{
               default: 3,
               768: 2,
             }}
-            className="my-masonry-grid"
-            columnClassName="my-masonry-grid_column">
+            className="m-grid"
+            columnClassName="m-grid__column">
             {
               images.map((image: ImageType) => {
                 return (

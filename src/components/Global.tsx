@@ -24,13 +24,13 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 
-  .my-masonry-grid {
+  .m-grid {
     display: flex;
     margin-left: -10px;
     width: auto;
   }
 
-  .my-masonry-grid_column {
+  .m-grid__column {
     padding-left: 10px;
     background-clip: padding-box;
   }
