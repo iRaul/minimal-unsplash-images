@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import dots from '../assets/dot-grid.png'
 
 const Title = styled.div`
   margin-bottom: 30px;
@@ -11,25 +10,6 @@ const Title = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: relative;
-  z-index: 1;
-
-  &:before {
-    content: '';
-    background-image: url(${dots});
-    background-position: center;
-    background-repeat: repeat;
-    position: absolute;
-    width: 100px;
-    height: 80px;
-    left: 30%;
-    top: 0px;
-    z-index: -1;
-
-    @media screen and (max-width: 768px) {
-      left: 0;
-    }
-  }
 
   h1 {
     text-transform: uppercase;
