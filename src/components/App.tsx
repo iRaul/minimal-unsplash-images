@@ -21,6 +21,7 @@ const App: React.FC = () => {
   const [images, setImages] = useState<ImageType[]>([]);
   const [page, setPage] = useState<number>(1);
   const [modalImg, setModalImg] = useState<string>('');
+  const [modal, setModal] = useState<boolean>(false);
 
   const getImages = async (items = 10, page = 1) => {
     const response = await fetch(`https://api.unsplash.com/search/photos?per_page=${items}&page=${page}&query=minimal&client_id=${process.env.REACT_APP_KEY}`);
@@ -63,7 +64,10 @@ const App: React.FC = () => {
                     key={image.id}
                     src={image.urls.small}
                     alt={image.alt_description}
-                    onClick={() => setModalImg(image.urls.regular)} />
+                    onClick={() => {
+                      setModalImg(image.urls.regular);
+                      setModal(true);
+                    }} />
                 )
               })
             }
@@ -71,9 +75,9 @@ const App: React.FC = () => {
         </InfiniteScroll>
       </Container>
 
-      {
-        modalImg ? <Modal src={modalImg} /> : null
-      }
+      <Modal
+        src={modalImg}
+        active={modal} />
     </>
   );
 }

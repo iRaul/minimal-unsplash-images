@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 type ModalProps = {
-  src: string
+  src?: string,
+  active: boolean,
 }
 
 const Overlay = styled.div`
@@ -13,20 +14,21 @@ const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 1;
   z-index: 4;
   transition: opacity .3s ease;
   padding: 0 15px;
+  opacity: ${(props: ModalProps) => props.active ? '1' : '0'};
+  visibility: ${(props: ModalProps) => props.active ? 'visible' : 'hidden'};
 
   img {
-    max-width: 600px;
+    max-width: 500px;
     width: 100%;
   }
 `;
 
-const Modal: React.FC<ModalProps> = ({ src }) => {
+const Modal: React.FC<ModalProps> = ({ src, active }) => {
   return (
-    <Overlay>
+    <Overlay active={active}>
       <img src={src} />
     </Overlay>
   )
