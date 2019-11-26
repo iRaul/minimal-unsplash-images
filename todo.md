@@ -3,5 +3,5 @@
 [-] Download Button
 [-] Refactoring
 [-] UI Improvements
-[-] Normalize
+[x] Normalize CSS
 [-] Scroll Top Button

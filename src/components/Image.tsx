@@ -1,13 +1,13 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 type ImgProps = {
   src: string,
   alt: string,
-  onClick: any,
+  onClick: () => void,
 }
 
-const ImgElem = styled.div`
+const ImageWrapper = styled.div`
   margin-bottom: 10px;
   border-radius: 4px;
   overflow: hidden;
@@ -15,41 +15,37 @@ const ImgElem = styled.div`
   position: relative;
 
   &:hover {
+    a {
+      opacity: 1;
+      visibility: visible;
+    }
+
     &:before {
-      background: linear-gradient(
-                          to bottom,
-                          rgba(0, 0, 0, 0.1) 0%,
-                          rgba(0, 0, 0, 0.1) 100%
-                        );
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.01) , rgba(0, 0, 0, 0.3));
     }
   }
 
   &:before {
     content: '';
-    background: linear-gradient(
-                        to bottom,
-                        rgba(0, 0, 0, 0.06) 0%,
-                        rgba(0, 0, 0, 0.06) 100%
-                      );
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     height: 100%;
     width: 100%;
-
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.01) , rgba(0, 0, 0, 0.02));
   }
+`;
 
-  img {
-    width: 100%;
-    display: block;
-  }
-`
+const Img = styled.img`
+  width: 100%;
+  display: block;
+`;
 
-const Image: React.FC<ImgProps> = ({ src, alt, onClick }) => {
+const Image: React.FC<ImgProps> = ({ src, alt, onClick, children }) => {
   return (
-    <ImgElem onClick={onClick}>
-      <img src={src} alt={alt} />
-    </ImgElem>
+    <ImageWrapper onClick={onClick}>
+      <Img src={src} alt={alt} />
+      {children}
+    </ImageWrapper>
   )
 }
 

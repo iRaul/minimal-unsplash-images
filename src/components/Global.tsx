@@ -1,6 +1,9 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
 
 const GlobalStyle = createGlobalStyle`
+  ${normalize}
+
   html,
   body {
     height: 100%;
@@ -34,6 +37,6 @@ const GlobalStyle = createGlobalStyle`
     padding-left: 10px;
     background-clip: padding-box;
   }
-`
+`;
 
-export default GlobalStyle
+export default GlobalStyle;

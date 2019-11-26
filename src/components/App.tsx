@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Masonry from 'react-masonry-css'
+import Masonry from 'react-masonry-css';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import GlobalStyle from './Global';
+import DownloadButton from './DownloadButton';
 import Container from './Container';
 import Loader from './Loader';
 import Header from './Header';
@@ -15,6 +16,9 @@ type ImageType = {
   urls: {
     small: string,
     regular: string
+  },
+  links: {
+    download: string,
   }
 }
 
@@ -74,7 +78,8 @@ const App: React.FC = () => {
                     onClick={() => {
                       setModalImg(image.urls.regular);
                       setModal(true);
-                    }} />
+                    }}>
+                  </Image>
                 )
               })
             }
