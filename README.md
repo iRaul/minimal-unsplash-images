@@ -1,7 +1,7 @@
 # Minimal Images from Unsplash 🌁
 > This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-![Readme Background](./github-img.png)
+![Readme Background](https://i.imgur.com/AcGQD9s.png)
 
 ### Install ⚙️
 
