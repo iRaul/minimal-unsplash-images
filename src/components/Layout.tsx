@@ -50,6 +50,10 @@ const Layout: React.FC = () => {
     getImages();
   }, []);
 
+  const closeModal = () => {
+    setModalImg('');
+  }
+
   const breackPoints = {
     default: 3,
     768: 2,
@@ -87,7 +91,12 @@ const Layout: React.FC = () => {
 
       </InfiniteScroll>
 
-      {modalImg && <Modal src={modalImg} />}
+      {
+        modalImg &&
+        <Modal
+          onClick={closeModal}
+          src={modalImg} />
+      }
     </>
   )
 }
