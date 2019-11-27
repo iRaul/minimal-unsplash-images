@@ -1,11 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-type ModalProps = {
-  src?: string,
-  active: boolean,
-}
-
 const ModalWrapper = styled.div`
   position: fixed;
   top: 0; left: 0;
@@ -17,8 +12,8 @@ const ModalWrapper = styled.div`
   z-index: 4;
   transition: opacity .3s ease;
   padding: 0 15px;
-  opacity: ${(props: ModalProps) => props.active ? '1' : '0'};
-  visibility: ${(props: ModalProps) => props.active ? 'visible' : 'hidden'};
+  opacity: 1;
+  visibility: visible;
 `;
 
 const Image = styled.img`
@@ -26,9 +21,9 @@ const Image = styled.img`
   width: 100%;
 `;
 
-const Modal: React.FC<ModalProps> = ({ src, active }) => {
+const Modal: React.FC<{ src: string }> = ({ src }) => {
   return (
-    <ModalWrapper active={active}>
+    <ModalWrapper>
       <Image src={src} />
     </ModalWrapper>
   )

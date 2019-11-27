@@ -13,15 +13,15 @@ const ImageWrapper = styled.div`
   overflow: hidden;
   cursor: zoom-in;
   position: relative;
+  object-fit: cover;
 
   &:hover {
-    a {
-      opacity: 1;
-      visibility: visible;
-    }
-
     &:before {
-      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.01) , rgba(0, 0, 0, 0.3));
+      background-image: linear-gradient(
+                          to bottom,
+                          rgba(0, 0, 0, 0.01) ,
+                          rgba(0, 0, 0, 0.3)
+                        );
     }
   }
 
@@ -31,7 +31,11 @@ const ImageWrapper = styled.div`
     top: 0; left: 0;
     height: 100%;
     width: 100%;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.01) , rgba(0, 0, 0, 0.02));
+    background-image: linear-gradient(
+                        to bottom,
+                        rgba(0, 0, 0, 0.01) ,
+                        rgba(0, 0, 0, 0.02)
+                      );
   }
 `;
 
