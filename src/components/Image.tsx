@@ -7,6 +7,17 @@ type ImgProps = {
   onClick: () => void,
 }
 
+const ImageOverlay = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: opacity .2s ease;
+`;
+
 const ImageWrapper = styled.div`
   margin-bottom: 10px;
   border-radius: 4px;
@@ -15,27 +26,18 @@ const ImageWrapper = styled.div`
   position: relative;
   object-fit: cover;
 
-  &:hover {
-    &:before {
-      background-image: linear-gradient(
-                          to bottom,
-                          rgba(0, 0, 0, 0.01) ,
-                          rgba(0, 0, 0, 0.3)
-                        );
-    }
-  }
-
   &:before {
     content: '';
     position: absolute;
-    top: 0; left: 0;
-    height: 100%;
+    top: 0;
+    left: 0;
     width: 100%;
-    background-image: linear-gradient(
-                        to bottom,
-                        rgba(0, 0, 0, 0.01) ,
-                        rgba(0, 0, 0, 0.02)
-                      );
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+
+  &:hover ${ImageOverlay} {
+    opacity: 1;
   }
 `;
 
@@ -46,9 +48,11 @@ const Img = styled.img`
 
 const Image: React.FC<ImgProps> = ({ src, alt, onClick, children }) => {
   return (
-    <ImageWrapper onClick={onClick}>
+    <ImageWrapper >
       <Img src={src} alt={alt} />
-      {children}
+      <ImageOverlay onClick={onClick}>
+        {children}
+      </ImageOverlay>
     </ImageWrapper>
   )
 }

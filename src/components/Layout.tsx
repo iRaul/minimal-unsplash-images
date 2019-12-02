@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, MouseEvent } from 'react';
 
 import axios from 'axios';
 
@@ -8,6 +8,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import Image from './Image';
 import Loader from './Loader';
 import Modal from './Modal';
+import DownloadButton from './DownloadButton';
 
 type ImageType = {
   id: string,
@@ -83,7 +84,12 @@ const Layout: React.FC = () => {
                   alt={image.alt_description}
                   onClick={() => {
                     setModalImg(image.urls.regular);
-                  }} />
+                  }} >
+                  <DownloadButton
+                    onClick={(e) => e.stopPropagation()}
+                    href={image.links.download}
+                    download={image.id} />
+                </Image>
               )
             })
           }

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import styled from 'styled-components';
 
 type ButtonProps = {
   href: string,
-  download: string
+  download: string,
+  onClick: (event: MouseEvent) => void,
 }
 
 const Button = styled.a`
@@ -17,13 +18,14 @@ const Button = styled.a`
   align-items: center;
   background-color: #fff;
   border-radius: 4px;
-  opacity: 0;
-  visibility: hidden;
 `;
 
-const DownloadButton: React.FC<ButtonProps> = ({ href, download }) => {
+const DownloadButton: React.FC<ButtonProps> = ({ href, download, onClick }) => {
   return (
-    <Button href={href} download={download}>
+    <Button
+      href={href}
+      download={download}
+      onClick={onClick}>
       <svg
         xmlns='http://www.w3.org/2000/svg'
         width='24'
