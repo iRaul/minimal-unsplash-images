@@ -47,7 +47,10 @@ const Close = styled.button`
   cursor: pointer;
   outline: none;
 
-  svg { display: block; }
+  svg {
+    display: block;
+    height: 20px;
+  }
 `;
 
 const Modal: React.FC<ModalTypes> = ({ src, onClick }) => {
