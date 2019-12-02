@@ -2,11 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import axios from 'axios';
 
-import Masonry from 'react-masonry-css';
-import InfiniteScroll from 'react-infinite-scroll-component';
-
+import Grid from './Grid';
 import Image from './Image';
-import Loader from './Loader';
 import Modal from './Modal';
 import DownloadButton from './DownloadButton';
 
@@ -51,56 +48,38 @@ const Layout: React.FC = () => {
     getImages();
   }, []);
 
-  const closeModal = () => {
-    setModalImg('');
-  }
-
-  const breackPoints = {
-    default: 3,
-    768: 2,
-  };
-
   return (
     <>
-      <InfiniteScroll
+      <Grid
         dataLength={images.length}
         next={() => {
           getImages(10, page + 1);
           setPage(page + 1);
-        }}
-        hasMore
-        loader={<Loader />}>
-
-        <Masonry
-          breakpointCols={breackPoints}
-          className="m-grid"
-          columnClassName="m-grid__column">
-          {
-            images.map((image: ImageType) => {
-              return (
-                <Image
-                  key={image.id}
-                  src={image.urls.regular}
-                  alt={image.alt_description}
-                  onClick={() => {
-                    setModalImg(image.urls.regular);
-                  }} >
-                  <DownloadButton
-                    onClick={(e) => e.stopPropagation()}
-                    href={image.links.download}
-                    download={image.id} />
-                </Image>
-              )
-            })
-          }
-        </Masonry>
-
-      </InfiniteScroll>
+        }}>
+        {
+          images.map((image: ImageType) => {
+            return (
+              <Image
+                key={image.id}
+                src={image.urls.regular}
+                alt={image.alt_description}
+                onClick={() => {
+                  setModalImg(image.urls.regular);
+                }} >
+                <DownloadButton
+                  onClick={(e) => e.stopPropagation()}
+                  href={image.links.download}
+                  download={image.id} />
+              </Image>
+            )
+          })
+        }
+      </Grid>
 
       {
         modalImg &&
         <Modal
-          onClick={closeModal}
+          onClick={() => setModalImg('')}
           src={modalImg} />
       }
     </>
