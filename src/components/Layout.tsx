@@ -6,18 +6,24 @@ import Grid from './Grid';
 import Image from './Image';
 import Modal from './Modal';
 import DownloadButton from './DownloadButton';
+import ScrollToTop from './ScrollToTop';
 
 type ImageType = {
   id: string,
   alt_description: string,
-  urls: { regular: string },
-  links: { download: string, }
+  urls: {
+    regular: string
+  },
+  links: {
+    download: string
+  }
 }
 
 const Layout: React.FC = () => {
   const [images, setImages] = useState<ImageType[]>([]);
   const [modalImg, setModalImg] = useState<string>('');
   const [page, setPage] = useState<number>(1);
+  const [scrollToTopVisible, setScrollToTopVisible] = useState<boolean>(false);
 
   const getImages = (items = 10, page = 1) => {
     const API_URL = 'https://api.unsplash.com/search/photos/';
@@ -44,9 +50,41 @@ const Layout: React.FC = () => {
       })
   }
 
+  const handleScroll = () => {
+    const y = window.scrollY;
+
+    if (y >= 600) {
+      setScrollToTopVisible(true);
+    } else {
+      setScrollToTopVisible(false);
+    }
+  }
+
+  const scrollToTop = () => {
+    if (window) {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   useEffect(() => {
     getImages();
   }, []);
+
+  useEffect(() => {
+    if (window) {
+      window.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      if (window) {
+        window.removeEventListener('scroll', handleScroll);
+      }
+    };
+  });
 
   return (
     <>
@@ -75,6 +113,11 @@ const Layout: React.FC = () => {
           })
         }
       </Grid>
+
+      {
+        scrollToTopVisible &&
+        <ScrollToTop onClick={scrollToTop} />
+      }
 
       {
         modalImg &&

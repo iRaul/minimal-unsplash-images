@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
     font-size: 16px;
+    scroll-behavior: smooth;
   }
 
   *, *:before, *:after {
