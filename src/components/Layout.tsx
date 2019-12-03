@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import useOnClickOutside from 'use-onclickoutside';
 
 import axios from 'axios';
 
@@ -24,6 +25,9 @@ const Layout: React.FC = () => {
   const [modalImg, setModalImg] = useState<string>('');
   const [page, setPage] = useState<number>(1);
   const [scrollToTopVisible, setScrollToTopVisible] = useState<boolean>(false);
+  const overlayRef = useRef(null)
+
+  useOnClickOutside(overlayRef, () => setModalImg(''));
 
   const getImages = (items = 10, page = 1) => {
     const API_URL = 'https://api.unsplash.com/search/photos/';
@@ -122,6 +126,7 @@ const Layout: React.FC = () => {
       {
         modalImg &&
         <Modal
+          ref={overlayRef}
           onClick={() => setModalImg('')}
           src={modalImg} />
       }

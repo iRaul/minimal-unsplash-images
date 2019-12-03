@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-type ModalTypes = {
+type Props = {
   src: string,
   onClick: () => void,
 }
+
+type Ref = HTMLDivElement;
 
 const ModalWrapper = styled.div`
   position: fixed;
@@ -53,29 +55,27 @@ const Close = styled.button`
   }
 `;
 
-const Modal: React.FC<ModalTypes> = ({ src, onClick }) => {
-  return (
-    <ModalWrapper>
-      <ImageWrapper>
-        <Image src={src} />
-        <Close onClick={onClick}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24">
-            <path d="M18 6L6 18"></path>
-            <path d="M6 6L18 18"></path>
-          </svg>
-        </Close>
-      </ImageWrapper>
-    </ModalWrapper>
-  )
-}
+const Modal = React.forwardRef<Ref, Props>((props, ref) => (
+  <ModalWrapper>
+    <ImageWrapper ref={ref}>
+      <Image src={props.src} />
+      <Close onClick={props.onClick}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          viewBox="0 0 24 24">
+          <path d="M18 6L6 18"></path>
+          <path d="M6 6L18 18"></path>
+        </svg>
+      </Close>
+    </ImageWrapper>
+  </ModalWrapper>
+));
 
 export default Modal;
