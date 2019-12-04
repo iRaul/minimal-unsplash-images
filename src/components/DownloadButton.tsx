@@ -1,7 +1,7 @@
 import React, { MouseEvent } from 'react';
 import styled from 'styled-components';
 
-type ButtonProps = {
+type Props = {
   href: string,
   download: string,
   onClick: (event: MouseEvent) => void,
@@ -20,7 +20,7 @@ const Button = styled.a`
   border-radius: 4px;
 `;
 
-const DownloadButton: React.FC<ButtonProps> = ({ href, download, onClick }) => {
+const DownloadButton: React.FC<Props> = ({ href, download, onClick }) => {
   return (
     <Button
       href={href}
