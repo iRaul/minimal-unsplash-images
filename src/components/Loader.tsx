@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-type AnimationProps = {
+type Props = {
   delay: string
 }
 
@@ -11,7 +11,7 @@ const CubesGrid = styled.div`
   margin: 80px auto;
 `;
 
-const Cube = styled.div<AnimationProps>`
+const Cube = styled.div<Props>`
   width: 33%;
   height: 33%;
   background-color: #333;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-type ButtonTypes = {
+type Props = {
   onClick: () => void,
 }
 
@@ -29,7 +29,7 @@ const Button = styled.button`
   }
 `;
 
-const ScrollToTop: React.FC<ButtonTypes> = ({ onClick }) => {
+const ScrollToTop: React.FC<Props> = ({ onClick }) => {
   return (
     <Button onClick={onClick}>
       <svg

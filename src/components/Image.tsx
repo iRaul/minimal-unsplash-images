@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-type ImgProps = {
+type Props = {
   src: string,
   alt: string,
   onClick: () => void,
@@ -46,7 +46,7 @@ const Img = styled.img`
   display: block;
 `;
 
-const Image: React.FC<ImgProps> = ({ src, alt, onClick, children }) => {
+const Image: React.FC<Props> = ({ src, alt, onClick, children }) => {
   return (
     <ImageWrapper >
       <Img src={src} alt={alt} />

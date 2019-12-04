@@ -3,7 +3,7 @@ import Masonry from 'react-masonry-css';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Loader from './Loader';
 
-type GridTypes = {
+type Props = {
   dataLength: number,
   next: () => void,
 }
@@ -13,7 +13,7 @@ const breakPoints = {
   768: 2,
 };
 
-const Grid: React.FC<GridTypes> = ({ dataLength, next, children }) => {
+const Grid: React.FC<Props> = ({ dataLength, next, children }) => {
   return (
     <InfiniteScroll
       dataLength={dataLength}
