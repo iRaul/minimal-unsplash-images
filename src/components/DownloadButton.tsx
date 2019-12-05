@@ -18,6 +18,11 @@ const Button = styled.a`
   align-items: center;
   background-color: #fff;
   border-radius: 4px;
+  transition: background-color .3s ease;
+
+  &:hover {
+    background-color: #f7f7f7;
+  }
 `;
 
 const DownloadButton: React.FC<Props> = ({ href, download, onClick }) => {
