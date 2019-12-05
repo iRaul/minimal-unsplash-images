@@ -29,13 +29,16 @@ const SubTitle = styled.span`
   display: block;
   font-size: 20px;
   color: #676767;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-style: italic;
 `;
 
 const Header: React.FC = () => {
   return (
     <HeaderWrapper>
       <Title>Minimal Images</Title>
-      <SubTitle>Minimal Images from Unsplash</SubTitle>
+      <SubTitle>from Unsplash</SubTitle>
     </HeaderWrapper>
   )
 }
