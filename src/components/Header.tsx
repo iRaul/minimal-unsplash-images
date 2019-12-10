@@ -15,13 +15,13 @@ const HeaderWrapper = styled.div`
 const Title = styled.h1`
   text-transform: uppercase;
   font-weight: 400;
-  font-size: 34px;
+  font-size: 28px;
   margin: 0;
   color: #2e2e2e;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
 
   @media screen and (max-width: 768px) {
-    font-size: 28px;
+    font-size: 24px;
   }
 `;
 
