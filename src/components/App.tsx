@@ -6,15 +6,15 @@ import Header from './Header';
 import Layout from './Layout';
 
 const App: React.FC = () => {
-  return (
-    <>
-      <GlobalStyle />
-      <Container>
-        <Header />
-        <Layout />
-      </Container>
-    </>
-  );
-}
+	return (
+		<>
+			<GlobalStyle />
+			<Container>
+				<Header />
+				<Layout />
+			</Container>
+		</>
+	);
+};
 
 export default App;
