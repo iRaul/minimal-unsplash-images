@@ -23,7 +23,7 @@
         "semi": true,
         "jsxSingleQuote": true,
         "singleQuote": true,
-        "useTabs": true
+        "useTabs": false
       }
     ],
     "react-hooks/exhaustive-deps": 0
