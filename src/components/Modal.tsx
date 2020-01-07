@@ -32,7 +32,9 @@ const ImageWrapper = styled.div`
 
 const Image = styled.img`
   max-width: 500px;
+  max-height: 90vh;
   width: 100%;
+  object-fit: cover;
 `;
 
 const Close = styled.button`
